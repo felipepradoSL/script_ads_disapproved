@@ -9,9 +9,9 @@
 **
 **  
 **  Planilha com as campanhas que foram pausadas:
-**  - https://docs.google.com/spreadsheets/d/1H9iqOthFHlWjIXoSRJn-YuP_xyx32HpzXdEARqyxTcY/
+**  - https://docs.google.com/spreadsheets/d/1FCG1JQlEobsKMeENcDrie-czQ9cF9DAxQWCX5Fk8AWw/
 **  
-**   MARIZE 2 
+**   AFILIADOS 3
 **  
 **
 *****************************************************************************/
@@ -29,7 +29,7 @@ ADS_CONDITIONS =
 NOTIF_EMAIL = "afiliados@sweetleads.com.br" // email 
 EMAIL_SUBJECT = "[GOOGLE ADS] - Anúncios REPROVADOS pausados" //subject
 
-SPREADSHEET_ID = "1H9iqOthFHlWjIXoSRJn-YuP_xyx32HpzXdEARqyxTcY";  //insert a new blank spreadsheet url 
+SPREADSHEET_ID = "1FCG1JQlEobsKMeENcDrie-czQ9cF9DAxQWCX5Fk8AWw";  //insert a new blank spreadsheet url 
 
 
 // SpreadSheet header
