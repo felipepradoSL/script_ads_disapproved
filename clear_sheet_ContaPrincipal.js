@@ -2,7 +2,10 @@
 **
 **  Sweet Leads Empreendimentos Digitais
 **  https://sweetleads.com.br
+**	felipe@sweetleads.com.br
 **
+**	GitHub
+**	https://github.com/felipepradoSL/script_ads_disapproved
 **
 **  LIMPA PLANILHA e insere cabeçalho
 **  
@@ -20,7 +23,8 @@ SPREADSHEET_ID = "1W_5VzHSP77R_3Yll0sYPBkFaKQW6KyuV769JV5AHtlM";
 var SHEET_REPORT_HEADER = [
 "Ads ID",
 "Campaign Name", 
-"Campaign ID"
+"Campaign ID",
+"Disapproval Reason"
 ];
 
 function main() {

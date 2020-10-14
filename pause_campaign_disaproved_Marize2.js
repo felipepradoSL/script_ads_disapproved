@@ -2,7 +2,10 @@
 **
 **  Sweet Leads Empreendimentos Digitais
 **  https://sweetleads.com.br
+**  felipe@sweetleads.com.br
 **
+**  GitHub
+**  https://github.com/felipepradoSL/script_ads_disapproved
 **
 **  Script verifica todos os anuncios que foram reprovados, pausa a campanha 
 **  e insere as campanhas na planilha, após isso é enviado um email de alerta
@@ -37,7 +40,8 @@ SPREADSHEET_ID = "1H9iqOthFHlWjIXoSRJn-YuP_xyx32HpzXdEARqyxTcY";  //insert a new
 var SHEET_REPORT_HEADER = [
 "Ads ID",
 "Campaign Name", 
-"Campaign ID"
+"Campaign ID",
+"Disapproval Reason"
 ];
 
 
@@ -82,10 +86,16 @@ function getAds(conds) {
 
     var current = adsIt.next();
     var campaign = current.getCampaign();
+    var policyTopic = current.getPolicyTopics();
+    var disapprovalReason = policyTopic.reduce(function(acc, obj){    
+      return obj.getName();
+    }, "");
+
     var adsId = current.getId();
 
     var adData = { campaign: campaign }//objeto com a campanha
     adData['adsId'] = adsId;
+    adData['disapprovalReason'] = disapprovalReason;
 
     ads.push(adData);   
 
@@ -154,11 +164,13 @@ var issues = [];
 var campaignName = results.campaign.getName();
 var campaignId = results.campaign.getId();
 var adsId = results.adsId;
+var disapprovalReason = results.disapprovalReason;
 
 issues.push([
   adsId,
   campaignName,
-  campaignId
+  campaignId,
+  disapprovalReason
   ]);  
 
 var lastRow = sheet.getLastRow();
