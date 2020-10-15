@@ -7,14 +7,15 @@
 **	GitHub
 **	https://github.com/felipepradoSL/script_ads_disapproved
 **
-**  LIMPA PLANILHA e insere cabeçalho
+**  Insere nova aba na planilha de acordo com o mês
 **  
-**  Limpa a planilha com as campanhas que foram pausadas:
+**  Planilha com as campanhas que foram pausadas:
 **  - https://docs.google.com/spreadsheets/d/1bWjdLM2PtLUvo_phxWYvN9tOdZob5vWyyOKoxoP6NBE/
 **  
 **   Afiliados 1
 **  
-** Ajustar para ser executado uma vez a cada dia
+**  Ajustar para ser executado uma vez a cada mês
+**
 *****************************************************************************/
 
 SPREADSHEET_ID = "1bWjdLM2PtLUvo_phxWYvN9tOdZob5vWyyOKoxoP6NBE";
@@ -35,11 +36,14 @@ function main() {
 
 //prepare spreadsheet
 function prepareSpreadsheet() {
+	var date = new Date();
+	var mes = ["janeiro","fevereiro","março","abril","maio", "junho","julho","agosto","setembro","outubro", "novembro", "dezembro"];
 
-  var ss = SpreadsheetApp.openById(SPREADSHEET_ID);//open google sheets by ID (URL)
-  var sheet = ss.getActiveSheet(); // select sheet actived
-  sheet.clear(); //remove earlies alerts
-  sheet.clearConditionalFormatRules(); // clear all conditional format rules in sheet
-  sheet.appendRow(SHEET_REPORT_HEADER); // append header
+	var activeSpreadsheet = SpreadsheetApp.openById(SPREADSHEET_ID);//open google sheets by ID (URL)
+  	var yourNewSheet = activeSpreadsheet.insertSheet(); // insert new sheet 
+  	yourNewSheet.setName(mes[date.getMonth()] + "/" + date.getFullYear()); //set name with current month and yeah 
+  	activeSpreadsheet.appendRow(SHEET_REPORT_HEADER); // append header
+  	activeSpreadsheet.moveActiveSheet(1); // move the new sheet to first position in the spreadsheet
+  	activeSpreadsheet.setActiveSheet(activeSpreadsheet.getSheets()[0]); // set new sheet as active
 }
 
